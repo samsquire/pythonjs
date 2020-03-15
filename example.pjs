@@ -1,23 +1,23 @@
 function Test():
-	var i = 0
-	if (i == 0):
-		console.log("Hello world"
-		+ "This should still work")
-	return i
+    var i = 0
+    if (i == 0):
+        console.log("Hello world"
+        + "This should still work")
+    return i
 
 function FizzBuzz(i):
-	if (i % 3 == 0):
-		console.log("Fizz")
-	if (i % 5 == 0):
-		console.log("Buzz")
+    if (i % 3 == 0):
+        console.log("Fizz")
+    if (i % 5 == 0):
+        console.log("Buzz")
 
 var blah = Test(10)
 FizzBuzz(blah)
 
 class Rectangle:
-	constructor(height, width):
-		this.width = width
-		this.height = height
+    constructor(height, width):
+        this.width = width
+        this.height = height
 
 rect = new Rectangle(10, 20)
 console.log(rect.width, rect.height)

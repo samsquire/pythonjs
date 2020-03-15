@@ -16,12 +16,16 @@ function convertFile(err, contents) {
   for (var i = 0 ; i < lines.length; i++) {
     var currentLine = lines[i];
     var spaces = 0;
+    var found_spaces = 0;
+    var firstCharPos = 0;
     for (var k = 0 ; k < currentLine.length ; k++) {
       var nextChar = currentLine.charAt(k);
-      if (nextChar == "\t") { spaces++;}
-      else { firstChar = nextChar; break; }
+      if (nextChar == ' ') { found_spaces++; }
+      else if (nextChar == "\t") { spaces++; }
+      else { firstCharPos = k; firstChar = nextChar; break; }
     }
-    //console.log(spaces);
+    spaces = spaces + (found_spaces / Number(process.argv[2]));
+    // console.log(spaces);
     // begin a block
     var blockBegin = currentLine.lastIndexOf(":");
     if (blockBegin != -1 && blockBegin == currentLine.length - 1) {
@@ -41,7 +45,7 @@ function convertFile(err, contents) {
       console.log(createSpaces(spaces) + "}");
       expectedIndent--;
       console.log(currentLine + ";");
-    } else if (currentLine.length > 0 && lines[i+1].charAt(spaces) != "+") {
+  } else if (currentLine.length > 0 && lines[i+1].charAt(firstCharPos) != "+") {
       console.log(currentLine + ";");
     } else {
       console.log(currentLine);
