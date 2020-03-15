@@ -1,8 +1,10 @@
-function Test():
-    var i = 0
-    if (i == 0):
+function Test(i):
+    if (i == 15):
         console.log("Hello world"
         + "This should still work")
+    (function ():
+        console.log("immediately executing")
+    )()
     return i
 
 function FizzBuzz(i):
@@ -11,7 +13,7 @@ function FizzBuzz(i):
     if (i % 5 == 0):
         console.log("Buzz")
 
-var blah = Test(10)
+var blah = Test(15)
 FizzBuzz(blah)
 
 class Rectangle:
