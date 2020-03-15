@@ -43,7 +43,7 @@ Becomes
 # Usage
 
 ```
-./pjs example.pjs | node
+./pjs.js example.pjs | node
 ```
 
 
