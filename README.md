@@ -25,7 +25,7 @@ class Rectangle {
 # Usage
 
 ```
-
+./pjs example.pjs | node
 ```
 
 
