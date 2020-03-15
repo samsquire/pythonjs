@@ -42,8 +42,14 @@ Becomes
 
 # Usage
 
+Write pythonic Javascript and convert to normal Javascript with the following command. Supports tabs or spaces (detected)
+
 ```
 ./pjs.js example.pjs | node
 ```
 
+If you have a number of spaces that is not 4 spaces per indention level, pass the number of spaces as the second argument.
 
+```
+./pjs.js example.pjs 4 | node
+```
