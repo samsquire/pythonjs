@@ -1,0 +1,14 @@
+function Test():
+	var i = 0;
+	if (i == 0):
+		console.log("Hello world")
+	return i
+
+function FizzBuzz(i):
+	if (i % 3 == 0):
+		console.log("Fizz")
+	if (i % 5 == 0):
+		console.log("Buzz")
+
+var blah = Test(10)
+FizzBuzz(blah)
