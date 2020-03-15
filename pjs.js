@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var fs = require('fs');
 
 function createSpaces(amount) {
@@ -24,7 +25,7 @@ function convertFile(err, contents) {
       else if (nextChar == "\t") { spaces++; }
       else { firstCharPos = k; firstChar = nextChar; break; }
     }
-    spaces = spaces + (found_spaces / Number(process.argv[2]));
+    spaces = spaces + (found_spaces / Number(process.argv[2] || 4));
     // console.log(spaces);
     // begin a block
     var blockBegin = currentLine.lastIndexOf(":");
