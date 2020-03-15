@@ -25,7 +25,7 @@ function convertFile(err, contents) {
       else if (nextChar == "\t") { spaces++; }
       else { firstCharPos = k; firstChar = nextChar; break; }
     }
-    spaces = spaces + (found_spaces / Number(process.argv[2] || 4));
+    spaces = spaces + (found_spaces / Number(process.argv[3] || 4));
     // console.log(spaces);
     // begin a block
     var blockBegin = currentLine.lastIndexOf(":");
@@ -56,4 +56,4 @@ function convertFile(err, contents) {
   }
 }
 
-fs.readFile('example.pjs', 'utf8', convertFile);
+fs.readFile(process.argv[2], 'utf8', convertFile);
