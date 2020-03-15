@@ -11,17 +11,20 @@ function createSpaces(amount) {
 function convertFile(err, contents) {
   var lines = contents.split("\n");
   var expectedIndent = 0;
+  var inLineContinuation = false;
+  var firstChar = "";
   for (var i = 0 ; i < lines.length; i++) {
     var currentLine = lines[i];
     var spaces = 0;
     for (var k = 0 ; k < currentLine.length ; k++) {
       var nextChar = currentLine.charAt(k);
       if (nextChar == "\t") { spaces++;}
-      else { break; }
+      else { firstChar = nextChar; break; }
     }
     //console.log(spaces);
     // begin a block
-    if (currentLine.lastIndexOf(":") != -1 && currentLine.lastIndexOf(":") == currentLine.length - 1) {
+    var blockBegin = currentLine.lastIndexOf(":");
+    if (blockBegin != -1 && blockBegin == currentLine.length - 1) {
       if (spaces == expectedIndent -1) {
         console.log(createSpaces(expectedIndent - 1) + "}");
         expectedIndent--;
@@ -37,7 +40,9 @@ function convertFile(err, contents) {
     } else if (spaces < expectedIndent) {
       console.log(createSpaces(spaces) + "}");
       expectedIndent--;
-      console.log(currentLine);
+      console.log(currentLine + ";");
+    } else if (currentLine.length > 0 && lines[i+1].charAt(spaces) != "+") {
+      console.log(currentLine + ";");
     } else {
       console.log(currentLine);
     }

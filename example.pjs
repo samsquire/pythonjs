@@ -1,7 +1,8 @@
 function Test():
 	var i = 0;
 	if (i == 0):
-		console.log("Hello world")
+		console.log("Hello world"
+		+ "This should still work")
 	return i
 
 function FizzBuzz(i):
