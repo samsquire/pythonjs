@@ -7,8 +7,8 @@ So
 ```
 class Rectangle:
     constructor(height, width):
-      this.height = height;
-      this.width = width;
+        this.width = width
+        this.height = height
 ```
 
 Is converted into:
