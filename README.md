@@ -1,6 +1,6 @@
 # pythonjs
 
-This is dirty converter of sourcecode from Pythonic JS, which is defined as blocks that have Python style.
+This is a dirty converter of sourcecode from Pythonic JS, which is defined as blocks that have Python style.
 
 So
 
