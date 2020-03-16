@@ -1,15 +1,21 @@
 function Test(i):
     if (i == 15):
+
         console.log("Hello world"
         + "This should still work")
+
     (function ():
         console.log("immediately executing")
     )()
+
     return i
 
 function FizzBuzz(i):
+
     if (i % 3 == 0):
+
         console.log("Fizz")
+
     if (i % 5 == 0):
         console.log("Buzz")
 
