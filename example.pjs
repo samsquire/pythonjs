@@ -23,7 +23,7 @@ var blah = Test(15)
 FizzBuzz(blah)
 
 class Rectangle:
-    constructor(height, width):
+    constructor(width, height):
         this.width = width
         this.height = height
 
