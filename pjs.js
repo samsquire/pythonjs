@@ -26,6 +26,7 @@ function convertFile(err, contents) {
   var inLineContinuation = false;
   var firstChar = "";
   var spaceLines = [];
+  var inSwitch = false;
   for (var i = 0 ; i < lines.length; i++) {
     var currentLine = lines[i];
     var spaces = 0;
@@ -47,11 +48,15 @@ function convertFile(err, contents) {
     // console.log(spaces);
     // begin a block
     var blockBegin = currentLine.lastIndexOf(":");
-    if (spaces != 0 && spaces < spaceLines[i-1] && expectedIndent > 0) {
+    if (currentLine.indexOf("switch") != -1) {
+        inSwitch = true;
+    }
+
+    if (!inSwitch && spaces != 0 && spaces < spaceLines[i-1] && expectedIndent > 0) {
         console.log("}");
         console.log(currentLine);
         expectedIndent--;
-    } else if (blockBegin != -1 && blockBegin == currentLine.length - 1) {
+    } else if (currentLine.indexOf("default") == -1  && currentLine.indexOf("case") == -1 && blockBegin != -1 && blockBegin == currentLine.length - 1) {
       if (spaces == expectedIndent - 1) {
         // console.log(createSpaces(expectedIndent - 1) + "}");
         // expectedIndent--;
@@ -72,12 +77,14 @@ function convertFile(err, contents) {
           }
       }
       if (collapseStack) {
+          if (inSwitch) { inSwitch == false; }
+          // console.log(collapseStack);
           for (var k = 0 ; k < expectedIndent - until; k++) {
               console.log("}");
           }
           expectedIndent -= expectedIndent - until;
       }
-    } else if (currentLine.length > 0 && scanNextLineFirstChar(lines[i+1]) != "+") {
+  } else if (currentLine.indexOf("default") == -1 && currentLine.indexOf("case") == -1 && currentLine.length > 0 && scanNextLineFirstChar(lines[i+1]) != "+") {
       console.log(currentLine + ";");
     } else {
       console.log(currentLine);

@@ -27,5 +27,13 @@ class Rectangle:
         this.width = width
         this.height = height
 
+switch(5):
+    case 5:
+        console.log("It was 5")
+	break
+    default:
+        console.log("Default")
+	break
+
 rect = new Rectangle(10, 20)
 console.log(rect.width, rect.height)
